@@ -30,28 +30,32 @@ export function Countdown() {
       </div>
 
       {hasFinished ? (
-        <button disabled type="button" className={styles.countdownButton}>
+        <button disabled className={styles.countdownButton}>
           Ciclo encerrado
-          <object data="assets/check_circle.svg" type="image/svg+xml"></object>
-        </button>
-      ) : isActive ? (
-        <button
-          type="button"
-          className={`${styles.countdownButton} ${styles.countdownButtonActive}`}
-          onClick={resetCountdown}
-        >
-          Abandonar ciclo
-          <object data="assets/close.svg" type="image/svg+xml"></object>
+          <img src="assets/check_circle.svg" alt="" />
         </button>
       ) : (
-        <button
-          type="button"
-          className={styles.countdownButton}
-          onClick={startCountdown}
-        >
-          Iniciar um ciclo
-          <object data="assets/play_arrow.svg" type="image/svg+xml"></object>
-        </button>
+        <>
+          {isActive ? (
+            <button
+              type="button"
+              className={`${styles.countdownButton} ${styles.countdownButtonActive}`}
+              onClick={resetCountdown}
+            >
+              Abandonar ciclo
+              <img src="assets/close.svg" alt="" />
+            </button>
+          ) : (
+            <button
+              type="button"
+              className={styles.countdownButton}
+              onClick={startCountdown}
+            >
+              Iniciar um ciclo
+              <img src="assets/play_arrow.svg" alt="" />
+            </button>
+          )}
+        </>
       )}
     </div>
   )
