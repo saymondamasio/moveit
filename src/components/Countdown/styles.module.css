@@ -54,7 +54,7 @@
   font-size: 1.25rem;
   font-weight: 600;
 
-  transition: 0.2s;
+  transition: background-color 0.2s;
 }
 
 .countdownButton:not(:disabled):hover {
