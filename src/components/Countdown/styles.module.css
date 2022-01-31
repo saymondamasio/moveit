@@ -66,11 +66,35 @@
 .countdownButtonActive {
   background: var(--white);
   color: var(--title);
+
+  position: relative;
+}
+
+.countdownButtonActive .progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  border-radius: 0px 0px 5px 5px;
+  background-color: var(--gray-line);
+}
+
+.countdownButtonActive .progress > div {
+  position: absolute;
+  bottom: 0;
+  height: 4px;
+  border-radius: 0px 0px 5px 5px;
+  background-color: var(--green);
 }
 
 .countdownButtonActive:not(:disabled):hover {
   background: var(--red);
   color: var(--white);
+}
+
+.countdownButtonActive:not(:disabled):hover svg path {
+  fill: var(--white);
 }
 
 .countdownButton:disabled {
@@ -82,6 +106,6 @@
   color: var(--text);
 }
 
-.countdownButton img {
+.countdownButton :is(img, svg) {
   margin-left: 16px;
 }

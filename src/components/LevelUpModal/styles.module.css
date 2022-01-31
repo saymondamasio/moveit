@@ -12,11 +12,15 @@
   background: var(--white);
   width: 100%;
   max-width: 400px;
-  padding: 2rem 3rem;
+
   border-radius: 5px;
   box-shadow: 0 0 60px rgba(0, 0, 0, 0.05);
   text-align: center;
   position: relative;
+}
+
+.container > div {
+  padding: 2rem 3rem 0;
 }
 
 .container header {
@@ -38,7 +42,7 @@
   margin-top: 0.25rem;
 }
 
-.container button {
+.container .closeModal {
   position: absolute;
   right: 0.5rem;
   top: 0.5rem;
@@ -46,4 +50,46 @@
   background-color: transparent;
   border: none;
   font-size: 0;
+}
+
+.shareButton {
+  margin-top: 2.5rem;
+  width: 100%;
+  height: 5rem;
+  border: none;
+  border-top: 1px solid #dcdde0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+
+  color: var(--blue-twitter);
+
+  background: #f5fcff;
+  box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.05);
+  border-radius: 0px 0px 5px 5px;
+
+  transition: 0.2s;
+}
+
+.shareButton:hover {
+  color: var(--white);
+  background-color: var(--blue-twitter);
+}
+
+.shareButton:hover svg path {
+  transition: 0.2s;
+}
+.shareButton:hover svg path {
+  fill: var(--white);
+}
+
+.shareButton svg {
+  margin-left: 16px;
 }

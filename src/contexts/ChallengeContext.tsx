@@ -1,7 +1,7 @@
-import Cookies from 'js-cookie'
 import { createContext, ReactNode, useEffect, useState } from 'react'
 import challenges from '../../challenges.json'
 import { LevelUpModal } from '../components/LevelUpModal'
+import { api } from '../services/api'
 
 type Challenge = {
   type: 'body' | 'eye'
@@ -26,36 +26,56 @@ export const ChallengesContext = createContext({} as ChallengesContextData)
 
 interface Props {
   children: ReactNode
-  level: number
-  currentExperience: number
-  challengesCompleted: number
 }
 
-export function ChallengesProvider({ children, ...rest }: Props) {
-  const [level, setLevel] = useState(rest.level || 1)
-  const [currentExperience, setCurrentExperience] = useState(
-    rest.currentExperience || 0
-  )
-  const [challengesCompleted, setChallengesCompleted] = useState(
-    rest.challengesCompleted || 0
-  )
+interface Data {
+  currentExperience: number
+  level: number
+  challengesCompleted: number
+  totalExperience: number
+}
+
+export function ChallengesProvider({ children }: Props) {
+  const [data, setData] = useState<Data>({
+    currentExperience: 0,
+    level: 1,
+    challengesCompleted: 0,
+    totalExperience: 0,
+  })
   const [activeChallenge, setActiveChallenge] = useState<Challenge | null>(null)
   const [isLevelUpModalOpen, setIsLevelUpModalOpen] = useState(false)
 
-  const experienceToNextLevel = Math.pow((level + 1) * 4, 2)
+  const experienceToNextLevel = Math.pow((data.level + 1) * 4, 2)
+
+  async function getData() {
+    try {
+      const profile = await api.get('/profile')
+      const data = profile.data
+
+      setData({
+        currentExperience: data.currentExperience || 0,
+        level: data.level || 1,
+        challengesCompleted: data.challengesCompleted || 0,
+        totalExperience: data.totalExperience || 0,
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  async function updateData(data: any) {
+    await api.put('/profile', data)
+  }
 
   useEffect(() => {
-    Cookies.set('level', String(level))
-    Cookies.set('currentExperience', String(currentExperience))
-    Cookies.set('challengesCompleted', String(challengesCompleted))
-  }, [level, currentExperience, challengesCompleted])
+    getData()
+  }, [])
 
   useEffect(() => {
     Notification.requestPermission()
   }, [])
 
   function levelUp() {
-    setLevel(level + 1)
     setIsLevelUpModalOpen(true)
   }
 
@@ -81,31 +101,53 @@ export function ChallengesProvider({ children, ...rest }: Props) {
     setActiveChallenge(null)
   }
 
-  function completeChallenge() {
+  async function completeChallenge() {
+    let level = data.level
+    let currentExperience: number
+    let challengesCompleted: number
+    let totalExperience: number
+
     if (!activeChallenge) {
       return
     }
 
     const { amount } = activeChallenge
 
-    let finalExperience = currentExperience + amount
+    let finalExperience = data.currentExperience + amount
 
     if (finalExperience >= experienceToNextLevel) {
       finalExperience = finalExperience - experienceToNextLevel
-      levelUp()
+      level = data.level + 1
     }
 
-    setCurrentExperience(finalExperience)
+    currentExperience = finalExperience
+    challengesCompleted = data.challengesCompleted + 1
+
+    totalExperience = Math.pow((level + 1) * 4, 2) - currentExperience
+
+    setData({
+      currentExperience,
+      level,
+      challengesCompleted,
+      totalExperience,
+    })
+
+    await updateData({
+      currentExperience,
+      level,
+      challengesCompleted,
+      totalExperience,
+    })
+
     resetChallenge()
-    setChallengesCompleted(challengesCompleted + 1)
   }
 
   return (
     <ChallengesContext.Provider
       value={{
-        level,
-        challengesCompleted,
-        currentExperience,
+        level: data.level,
+        challengesCompleted: data.challengesCompleted,
+        currentExperience: data.currentExperience,
         startNewChallenge,
         levelUp,
         activeChallenge,

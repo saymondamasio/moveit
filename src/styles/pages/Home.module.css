@@ -3,6 +3,7 @@
   max-width: 992px;
   margin: 0 auto;
   padding: 2.5rem 2rem;
+  overflow: auto;
 
   display: flex;
   flex-direction: column;
@@ -11,9 +12,24 @@
 .container section {
   flex: 1;
 
+  margin-top: 20px;
+
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 6.25rem;
 
   align-content: center;
+}
+
+@media (max-width: 768px) {
+  .container section {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 850px) {
+  .container section {
+    gap: 2rem;
+  }
 }

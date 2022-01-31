@@ -1,4 +1,5 @@
 import { useContext } from 'react'
+import Close from '../../../public/assets/close.svg'
 import { CountdownContext } from '../../contexts/CountdownContext'
 import styles from './styles.module.css'
 
@@ -10,7 +11,12 @@ export function Countdown() {
     isActive,
     resetCountdown,
     startCountdown,
+    totalTimeInMinutes,
   } = useContext(CountdownContext)
+  const timeInSecondsActual = totalTimeInMinutes * 60 - (minutes * 60 + seconds)
+
+  const percentProgressActual =
+    (timeInSecondsActual * 100) / (totalTimeInMinutes * 60)
 
   const [minuteLeft, minuteRight] = String(minutes).padStart(2, '0').split('')
   const [secondLeft, secondRight] = String(seconds).padStart(2, '0').split('')
@@ -43,7 +49,10 @@ export function Countdown() {
               onClick={resetCountdown}
             >
               Abandonar ciclo
-              <img src="assets/close.svg" alt="" />
+              <Close />
+              <div className={styles.progress}>
+                <div style={{ width: `${percentProgressActual}%` }} />
+              </div>
             </button>
           ) : (
             <button

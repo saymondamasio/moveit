@@ -5,27 +5,16 @@ import { CompletedChallenges } from '../components/CompletedChallenges'
 import { Countdown } from '../components/Countdown'
 import { ExperienceBar } from '../components/ExperienceBar'
 import { Profile } from '../components/Profile'
-import { ChallengesProvider } from '../contexts/ChallengeContext'
+import { SideBar } from '../components/SideBar'
 import { CountdownProvider } from '../contexts/CountdownContext'
 import styles from '../styles/pages/Home.module.css'
+import { withSSRAuth } from '../utils/withSSRAuth'
 
-interface Props {
-  level: number
-  currentExperience: number
-  challengesCompleted: number
-}
-
-const Home: NextPage<Props> = ({
-  challengesCompleted,
-  currentExperience,
-  level,
-}) => {
+const Home: NextPage = () => {
   return (
-    <ChallengesProvider
-      level={level}
-      currentExperience={currentExperience}
-      challengesCompleted={challengesCompleted}
-    >
+    <div className="container-dashboard">
+      <SideBar />
+
       <div className={styles.container}>
         <Head>
           <title>Início | Move.it</title>
@@ -46,20 +35,14 @@ const Home: NextPage<Props> = ({
           </section>
         </CountdownProvider>
       </div>
-    </ChallengesProvider>
+    </div>
   )
 }
 
 export default Home
 
-export const getServerSideProps: GetServerSideProps = async ctx => {
-  const { level, currentExperience, challengesCompleted } = ctx.req.cookies
-
+export const getServerSideProps: GetServerSideProps = withSSRAuth(async ctx => {
   return {
-    props: {
-      level: Number(level),
-      currentExperience: Number(currentExperience),
-      challengesCompleted: Number(challengesCompleted),
-    },
+    props: {},
   }
-}
+})

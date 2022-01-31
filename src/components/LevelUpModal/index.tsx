@@ -1,4 +1,5 @@
 import { useContext } from 'react'
+import Twitter from '../../../public/assets/twitter.svg'
 import { ChallengesContext } from '../../contexts/ChallengeContext'
 import styles from './styles.module.css'
 
@@ -8,13 +9,22 @@ export function LevelUpModal() {
   return (
     <div className={styles.overlay}>
       <div className={styles.container}>
-        <header>{level}</header>
+        <div>
+          <header>{level}</header>
 
-        <strong>Parabéns</strong>
-        <p>você alcançou um novo level.</p>
+          <strong>Parabéns</strong>
+          <p>você alcançou um novo level.</p>
 
-        <button type="button" onClick={closeLevelUpModal}>
-          <img src="assets/close.svg" alt="Fechar modal" />
+          <button
+            className={styles.closeModal}
+            type="button"
+            onClick={closeLevelUpModal}
+          >
+            <img src="assets/close.svg" alt="Fechar modal" />
+          </button>
+        </div>
+        <button className={styles.shareButton} type="button">
+          Compartilhar no Twitter <Twitter />
         </button>
       </div>
     </div>

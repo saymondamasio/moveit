@@ -28,14 +28,15 @@ export function ChallengeBox() {
     <div className={styles.challengeBoxContainer}>
       {activeChallenge ? (
         <div className={styles.challengeActive}>
-          <header>Ganhe {activeChallenge.amount} xp</header>
+          <div>
+            <header>Ganhe {activeChallenge.amount} xp</header>
 
-          <main>
-            <img src={icons[activeChallenge.type]} alt="Desafio" />
-            <strong>Desafio</strong>
-            <p>{activeChallenge.description}</p>
-          </main>
-
+            <main>
+              <img src={icons[activeChallenge.type]} alt="Desafio" />
+              <strong>Desafio</strong>
+              <p>{activeChallenge.description}</p>
+            </main>
+          </div>
           <footer>
             <button
               type="button"
