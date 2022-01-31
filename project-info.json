@@ -1,0 +1,45 @@
+{
+  "name": "MoveIt",
+  "videos": [
+    "https://raw.githubusercontent.com/saymondamasio/moveit/main/.github/demonstration.mp4"
+  ],
+  "images": [
+    "https://raw.githubusercontent.com/saymondamasio/moveit/main/.github/screenshot-1.jpg",
+    "https://raw.githubusercontent.com/saymondamasio/moveit/main/.github/screenshot-2.jpg",
+    "https://raw.githubusercontent.com/saymondamasio/moveit/main/.github/screenshot-3.jpg",
+    "https://raw.githubusercontent.com/saymondamasio/moveit/main/.github/screenshot-4.jpg"
+  ],
+  "description": "Essa aplicação usa a técnica de pomodoro como base para sua funcionalidade, apos 25 minutos é sugerido um pequeno desafio de um exercício físico, apos a conclusão com sucesso do desafio é adicionado pontos em seu xp, que poderá ser visto pela comunidade no próprio aplicativo um ranking das melhores pontuações e níveis.",
+  "short_description": "Uma aplicação web para lembrar-se de se exercitar",
+  "link_preview": "https://moveit-damasio.vercel.app",
+  "techs": [
+    {
+      "name": "Next.js",
+      "url": "https://nextjs.org/"
+    },
+    {
+      "name": "Typescript",
+      "url": "https://www.typescriptlang.org/"
+    },
+    {
+      "name": "Mongo",
+      "url": "https://www.mongodb.com/"
+    },
+    {
+      "name": "Axios",
+      "url": "https://axios-http.com/"
+    },
+    {
+      "name": "Next Auth",
+      "url": "https://next-auth.js.org/"
+    },
+    {
+      "name": "Eslint",
+      "url": "https://eslint.org/"
+    },
+    {
+      "name": "Prettier",
+      "url": "https://prettier.io/"
+    }
+  ]
+}

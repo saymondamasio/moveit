@@ -112,7 +112,7 @@ export function ChallengesProvider({ children }: Props) {
     let level = data.level
     let currentExperience: number
     let challengesCompleted: number
-    let totalExperience: number
+    let totalExperience = data.totalExperience
 
     if (!activeChallenge) {
       return
@@ -130,8 +130,7 @@ export function ChallengesProvider({ children }: Props) {
 
     currentExperience = finalExperience
     challengesCompleted = data.challengesCompleted + 1
-
-    totalExperience = Math.pow((level + 1) * 4, 2) - currentExperience
+    totalExperience += amount
 
     setData({
       currentExperience,
