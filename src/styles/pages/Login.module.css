@@ -1,0 +1,66 @@
+.container {
+  height: 100vh;
+
+  background: var(--blue);
+}
+
+.container > div {
+  max-width: 1440px;
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.container > div > img {
+  position: absolute;
+  left: -63px;
+  z-index: 0;
+}
+
+.container main {
+  max-width: 420px;
+  margin-right: 10%;
+  z-index: 100;
+}
+
+.container main h1 {
+  margin-top: 96px;
+
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 46px;
+  /* identical to box height, or 128% */
+
+  color: #ffffff;
+}
+
+.container main button {
+  margin-top: 24px;
+  width: 318px;
+  background-color: transparent;
+  border: none;
+  align-items: center;
+
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  /* or 150% */
+
+  /* Texto Azul */
+
+  color: #e0e3ff;
+
+  text-align: left;
+  display: flex;
+}
+
+.container main button img {
+  margin-right: 24px;
+}
