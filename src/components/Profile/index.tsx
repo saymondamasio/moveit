@@ -10,7 +10,10 @@ export function Profile() {
 
   return (
     <div className={styles.profileContainer}>
-      <img src={session?.user?.image ?? undefined} alt="Saymon Damásio" />
+      <img
+        src={session?.user?.image ?? undefined}
+        alt={session?.user?.name ?? undefined}
+      />
 
       <div>
         <strong>{session?.user?.name}</strong>

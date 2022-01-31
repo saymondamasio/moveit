@@ -51,8 +51,8 @@ const LeaderBoard: NextPage<Props> = ({ users }) => {
                   <div>
                     <img
                       className={styles.avatar}
-                      src="https://github.com/saymondamasio.png"
-                      alt="Saymon Damásio"
+                      src={user?.image ?? undefined}
+                      alt={user?.name ?? undefined}
                     />
 
                     <div>
