@@ -9,7 +9,7 @@ const icons = {
 }
 
 export function ChallengeBox() {
-  const { activeChallenge, resetChallenge, completeChallenge } =
+  const { activeChallenge, resetChallenge, completeChallenge, isUpdatingData } =
     useContext(ChallengesContext)
 
   const { resetCountdown } = useContext(CountdownContext)
@@ -42,11 +42,13 @@ export function ChallengeBox() {
               type="button"
               className={styles.challengeFailedButton}
               onClick={handleChallengeFailed}
+              disabled={isUpdatingData}
             >
               Falhei
             </button>
             <button
               type="button"
+              disabled={isUpdatingData}
               className={styles.challengeSucceededButton}
               onClick={handleChallengeSucceeded}
             >

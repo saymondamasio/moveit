@@ -15,6 +15,7 @@ interface ChallengesContextData {
   challengesCompleted: number
   experienceToNextLevel: number
   activeChallenge: Challenge | null
+  isUpdatingData: boolean
   startNewChallenge: () => void
   levelUp: () => void
   resetChallenge: () => void
@@ -42,6 +43,7 @@ export function ChallengesProvider({ children }: Props) {
     challengesCompleted: 0,
     totalExperience: 0,
   })
+  const [isUpdatingData, setIsUpdatingData] = useState(false)
   const [activeChallenge, setActiveChallenge] = useState<Challenge | null>(null)
   const [isLevelUpModalOpen, setIsLevelUpModalOpen] = useState(false)
 
@@ -64,7 +66,12 @@ export function ChallengesProvider({ children }: Props) {
   }
 
   async function updateData(data: any) {
-    await api.put('/profile', data)
+    setIsUpdatingData(true)
+    try {
+      await api.put('/profile', data)
+    } finally {
+      setIsUpdatingData(false)
+    }
   }
 
   useEffect(() => {
@@ -149,6 +156,7 @@ export function ChallengesProvider({ children }: Props) {
         level: data.level,
         challengesCompleted: data.challengesCompleted,
         currentExperience: data.currentExperience,
+        isUpdatingData,
         startNewChallenge,
         levelUp,
         activeChallenge,

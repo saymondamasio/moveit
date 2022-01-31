@@ -124,6 +124,10 @@
   background-color: var(--green);
 }
 
+.challengeActive footer button[disabled] {
+  opacity: 0.5;
+}
+
 .challengeActive footer button.challengeFailedButton:hover {
   color: var(--white);
   background-color: var(--red);
