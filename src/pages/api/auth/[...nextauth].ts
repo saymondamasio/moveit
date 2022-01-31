@@ -25,7 +25,15 @@ export default NextAuth({
 
         const userExists = await collection.findOne({ email })
         if (!userExists) {
-          await collection.insertOne({ email, name, image })
+          await collection.insertOne({
+            email,
+            name,
+            image,
+            currentExperience: 0,
+            level: 0,
+            challengesCompleted: 0,
+            totalExperience: 0,
+          })
         }
 
         return true
