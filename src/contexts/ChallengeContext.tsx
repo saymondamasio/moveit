@@ -118,6 +118,7 @@ export function ChallengesProvider({ children }: Props) {
     if (finalExperience >= experienceToNextLevel) {
       finalExperience = finalExperience - experienceToNextLevel
       level = data.level + 1
+      levelUp()
     }
 
     currentExperience = finalExperience
