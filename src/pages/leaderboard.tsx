@@ -86,7 +86,7 @@ export const getServerSideProps: GetServerSideProps = withSSRAuth(async ctx => {
   const db = await connectDatabase(process.env.MONGODB_URL!)
   const collection = db.collection('users')
 
-  const users = await collection.find().sort({ totalExperience: 1 }).toArray()
+  const users = await collection.find().sort({ totalExperience: -1 }).toArray()
 
   return {
     props: {
