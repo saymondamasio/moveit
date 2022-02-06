@@ -1,13 +1,19 @@
-import type { NextPage } from 'next'
+import type { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 import styles from '../styles/pages/Conquest.module.css'
 
-const Conquest: NextPage = () => {
-  const { query } = useRouter()
-  const { level, challenges, experience } = query
+interface Props {
+  level: number
+  challenges: number
+  experience: number
+}
 
+const Conquest: NextPage<Props> = ({
+  challenges,
+  experience,
+  level,
+}: Props) => {
   return (
     <div className="container-dashboard">
       <Head>
@@ -45,7 +51,7 @@ const Conquest: NextPage = () => {
         <main>
           <section>
             <div>
-              <h2>${level}</h2>
+              <h2>{level}</h2>
             </div>
             <h1>
               Avancei para
@@ -57,13 +63,13 @@ const Conquest: NextPage = () => {
               <li>
                 <h2>desafios</h2>
                 <p>
-                  <span>${challenges}</span> completados
+                  <span>{challenges}</span> completados
                 </p>
               </li>
               <li>
                 <h2>experiência</h2>
                 <p>
-                  <span>${experience}</span> xp
+                  <span>{experience}</span> xp
                 </p>
               </li>
             </ul>
@@ -134,3 +140,24 @@ const Conquest: NextPage = () => {
 }
 
 export default Conquest
+
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  const { level, challenges, experience } = query
+
+  if (!level || !challenges || !experience) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    }
+  }
+
+  return {
+    props: {
+      level: String(level),
+      challenges: String(challenges),
+      experience: String(experience),
+    },
+  }
+}
