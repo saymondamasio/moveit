@@ -1,15 +1,92 @@
-:root {
-  --white: #fff;
-  --background: #f2f3f5;
-  --gray-line: #dcdde0;
+body[data-theme='light'] {
+  --background: #f0f1f3;
+  --background-sidebar: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
   --text: #666666;
-  --text-highlight: #b3b9ff;
-  --title: #2e384d;
-  --red: #e83f5b;
+  --box-challenge: #ffffff;
+  --background-countdown: #ffffff;
+  --line-border: #dcdde0;
   --green: #4cd62b;
   --blue: #5965e0;
-  --blue-dark: #4653b8;
-  --blue-twitter: #2aa9e0;
+  --countdown-button-background: #5965e0;
+  --countdown-button-text: #ffffff;
+  --countdown-cancel-button-background: ##ffffff;
+  --countdown-cancel-button-text: #666666;
+  --countdown-cancel-button-background-hover: #e83f5b;
+  --countdown-cancel-button-text-hover: #ffffff;
+  --title: #2e384d;
+  --toggle-button-color-hover: #5965e0;
+  --toggle-button-color: #777777;
+
+  --challenge-failed-button-background: #fff5f5;
+  --challenge-failed-button-text: #e83f5b;
+  --challenge-failed-button-background-hover: #e83f5b;
+  --challenge-failed-button-text-hover: #ffffff;
+
+  --challenge-success-button-background: #f7fff5;
+  --challenge-success-button-text: #3fb023;
+  --challenge-success-button-background-hover: #3fb023;
+  --challenge-success-button-text-hover: #ffffff;
+
+  --table--header-text: rgba(240, 240, 240, 0.5);
+  --table-body-background: #e5e6e8;
+
+  --modal-overlay: rgba(242, 243, 245, 0.8);
+  --modal-background: linear-gradient(180deg, #ffffff 0%, #ffffff 100%);
+  --level-modal: #5965e0;
+  --share-twitter-button-text: #2aa9e0;
+  --share-twitter-button-background: #f5fcff;
+  --share-twitter-button-text-hover: #fff;
+  --share-twitter-button-background-hover: #2aa9e0;
+}
+
+body[data-theme='dark'] {
+  --background: #090f13;
+  --background-sidebar: linear-gradient(
+    180deg,
+    #040708 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  --text: #d0d0d0;
+  --box-challenge: #192a32;
+  --background-countdown: #192a32;
+  --line-border: #747476;
+  --green: #4cd62b;
+  --blue: #5965e0;
+  --title: #6980b0;
+  --toggle-button-color-hover: #ffff00;
+  --toggle-button-color: #ffffff;
+
+  --countdown-button-background: #5965e0;
+  --countdown-button-text: #f0f0f0;
+  --countdown-cancel-button-background: #3d677b;
+  --countdown-cancel-button-text: #eeeeee;
+  --countdown-cancel-button-background-hover: #e83f5b;
+  --countdown-cancel-button-text-hover: #ffffff;
+
+  --challenge-failed-button-background: #6d3c44;
+  --challenge-failed-button-text: #ffffff;
+  --challenge-failed-button-background-hover: #e83f5b;
+  --challenge-failed-button-text-hover: #ffffff;
+
+  --challenge-success-button-background: #27461f;
+  --challenge-success-button-text: #ffffff;
+  --challenge-success-button-background-hover: #3fb023;
+  --challenge-success-button-text-hover: #ffffff;
+
+  --table--header-text: rgba(240, 240, 240, 0.8);
+  --table-body-background: #1e313f;
+
+  --modal-overlay: rgba(110, 110, 110, 0.8);
+  --modal-background: linear-gradient(180deg, #192a32 0%, #192a32 100%);
+  --level-modal: #5965e0;
+  --share-twitter-button-text: #fff;
+  --share-twitter-button-background: #5d8193;
+  --share-twitter-button-text-hover: #fff;
+  --share-twitter-button-background-hover: #2aa9e0;
 }
 
 @media (max-width: 1080px) {

@@ -21,8 +21,6 @@ interface Props {
 }
 
 const LeaderBoard: NextPage<Props> = ({ users }) => {
-  console.log(users)
-
   return (
     <div className="container-dashboard">
       <SideBar />
@@ -36,12 +34,10 @@ const LeaderBoard: NextPage<Props> = ({ users }) => {
 
         <table>
           <thead>
-            <tr>
-              <th className={styles.position}>Posição</th>
-              <th className={styles.user}>Usuário</th>
-              <th className={styles.challenges}>Desafios</th>
-              <th className={styles.experience}>Experiência</th>
-            </tr>
+            <th className={styles.position}>Posição</th>
+            <th className={styles.user}>Usuário</th>
+            <th className={styles.challenges}>Desafios</th>
+            <th className={styles.experience}>Experiência</th>
           </thead>
           <tbody>
             {users.map((user, index) => (

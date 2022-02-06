@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Award from '../../../public/assets/award.svg'
 import Home from '../../../public/assets/home.svg'
 import { ActiveLink } from '../ActiveLink'
+import { ThemeSwitcher } from '../ThemeSwitcher'
 import styles from './styles.module.css'
 
 export function SideBar() {
@@ -24,6 +25,8 @@ export function SideBar() {
             <Award />
           </a>
         </ActiveLink>
+
+        <ThemeSwitcher />
       </nav>
     </aside>
   )

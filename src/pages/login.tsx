@@ -1,9 +1,13 @@
 import { signIn } from 'next-auth/react'
+import Head from 'next/head'
 import styles from '../styles/pages/Login.module.css'
 
 export default function Login() {
   return (
     <div className={styles.container}>
+      <Head>
+        <title>Login | Move.it</title>
+      </Head>
       <div>
         <img src="assets/background-login.svg" alt="" />
 
