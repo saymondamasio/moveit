@@ -4,7 +4,15 @@ import { ChallengesContext } from '../../contexts/ChallengeContext'
 import styles from './styles.module.css'
 
 export function LevelUpModal() {
-  const { level, closeLevelUpModal } = useContext(ChallengesContext)
+  const { level, challengesCompleted, totalExperience, closeLevelUpModal } =
+    useContext(ChallengesContext)
+  const twitterUrl = encodeURIComponent(
+    `${process.env.NEXT_PUBLIC_APP_URL}/api/thumbnail.png?level=${String(
+      level
+    )}&challenges=${String(challengesCompleted)}&experience=${String(
+      totalExperience
+    )}`
+  )
 
   return (
     <div className={styles.overlay}>
@@ -23,9 +31,15 @@ export function LevelUpModal() {
             <img src="assets/close.svg" alt="Fechar modal" />
           </button>
         </div>
-        <button className={styles.shareButton} type="button">
+        <a
+          target="_blank"
+          href={`https://twitter.com/intent/tweet?url=${twitterUrl}`}
+          className={styles.shareButton}
+          type="button"
+          rel="noreferrer"
+        >
           Compartilhar no Twitter <Twitter />
-        </button>
+        </a>
       </div>
     </div>
   )

@@ -16,6 +16,7 @@ interface ChallengesContextData {
   experienceToNextLevel: number
   activeChallenge: Challenge | null
   isUpdatingData: boolean
+  totalExperience: number
   startNewChallenge: () => void
   levelUp: () => void
   resetChallenge: () => void
@@ -155,6 +156,7 @@ export function ChallengesProvider({ children }: Props) {
         level: data.level,
         challengesCompleted: data.challengesCompleted,
         currentExperience: data.currentExperience,
+        totalExperience: data.totalExperience,
         isUpdatingData,
         startNewChallenge,
         levelUp,
