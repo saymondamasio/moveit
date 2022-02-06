@@ -1,15 +1,13 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import styles from '../styles/pages/Conquest.module.css'
 
-interface Props {
-  level: number
-  challenges: number
-  experience: number
-}
+const Conquest: NextPage = () => {
+  const { query } = useRouter()
+  const { level, challenges, experience } = query
 
-const Conquest: NextPage<Props> = ({ level, challenges, experience }) => {
   return (
     <div className="container-dashboard">
       <Head>
