@@ -11,9 +11,9 @@ export default async function handler(
 ) {
   const query = request.query
 
-  const isImage = Boolean(query.image)
+  if (query.thumbnail === 'thumbnail.png') {
+    console.log('image')
 
-  if (isImage) {
     try {
       const level = Number(query.level)
       const challenges = Number(query.challenges)
@@ -53,7 +53,9 @@ export default async function handler(
       console.log(isDev)
     }
   }
-  if (!isImage) {
+  if (query.thumbnail === 'thumbnail') {
+    console.log('api')
+
     try {
       const level = Number(query.level)
       const challenges = Number(query.challenges)
