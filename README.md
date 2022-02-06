@@ -8,7 +8,7 @@
 
 <p align="center">Uma aplicação web para lembrar-se de se exercitar</p>
 
-<video src=".github/demonstration.mp4" width="100%"/>
+https://user-images.githubusercontent.com/50559834/152692871-efbe11d9-4a53-4ed7-b317-12622e885be5.mp4
 
 <p align="center">
   <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/saymondamasio/moveit">
