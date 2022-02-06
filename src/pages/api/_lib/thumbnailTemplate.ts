@@ -142,7 +142,7 @@ export function getHtml({ level, challenges, experience }: GetHtmlProps) {
           </ul>
           <a href="${process.env.NEXT_PUBLIC_APP_URL}"><img src="${
     process.env.NEXT_PUBLIC_APP_URL
-  }/full-logo.svg" alt="Logotipo Move.it" /></a>
+  }/assets/full-logo.svg" alt="Logotipo Move.it" /></a>
         </section>
       </main>
     </body>
