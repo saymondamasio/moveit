@@ -16,8 +16,8 @@ export function getHtml({ level, challenges, experience }: GetHtmlProps) {
       <meta name="twitter:description" content="Consegui um novo nível depois de completar ${challenges} desafios no Move.it! Acumulando ${experience} xp!" />
       <meta name="og:description" content="Consegui um novo nível depois de completar ${challenges} desafios no Move.it! Acumulando ${experience} xp!" />
       <meta name="og:title" content="Vamos comemorar! Eu subi para o nível ${level}" />
-      <meta name="twitter:image" content="${`${process.env.NEXT_PUBLIC_APP_URL}/api/thumbnail?image=true&level=${level}&challenges=${challenges}&experience=${experience}`}" />
-      <meta name="og:image" content="${`${process.env.NEXT_PUBLIC_APP_URL}/api/thumbnail?image=true&level=${level}&challenges=${challenges}&experience=${experience}`}" />
+      <meta name="twitter:image" content="${`${process.env.NEXT_PUBLIC_APP_URL}/api/thumbnail.png?level=${level}&challenges=${challenges}&experience=${experience}`}" />
+      <meta name="og:image" content="${`${process.env.NEXT_PUBLIC_APP_URL}/api/thumbnail.png?level=${level}&challenges=${challenges}&experience=${experience}`}" />
       
       <link rel="shortcut icon" href="${
         process.env.NEXT_PUBLIC_APP_URL
@@ -68,7 +68,7 @@ export function getHtml({ level, challenges, experience }: GetHtmlProps) {
         main section > div {
           background: url("${
             process.env.NEXT_PUBLIC_APP_URL
-          }/assets/up.svg") no-repeat center;
+          }/assets/congratulations-bg.svg") no-repeat center;
           background-size: 385px;
         }
         
@@ -142,7 +142,7 @@ export function getHtml({ level, challenges, experience }: GetHtmlProps) {
           </ul>
           <a href="${process.env.NEXT_PUBLIC_APP_URL}"><img src="${
     process.env.NEXT_PUBLIC_APP_URL
-  }/logo-full.svg" alt="Logotipo Move.it" /></a>
+  }/full-logo.svg" alt="Logotipo Move.it" /></a>
         </section>
       </main>
     </body>
