@@ -1,26 +1,27 @@
+import chromium from 'chrome-aws-lambda'
 import puppeteer, { Page } from 'puppeteer'
-import { getOptions } from './chromeOptions'
 
 let _page: Page | null
 
-async function getPage(isDev: boolean): Promise<Page> {
+async function getPage(): Promise<Page> {
   if (_page) {
     return _page
   }
 
-  const options = await getOptions(isDev)
-  const browser = await puppeteer.launch(options)
+  const browser = await puppeteer.launch({
+    headless: true,
+    args: chromium.args,
+    defaultViewport: chromium.defaultViewport,
+    executablePath: await chromium.executablePath,
+  })
 
   _page = await browser.newPage()
 
   return _page
 }
 
-export async function getScreenshot(
-  html: string,
-  isDev: boolean
-): Promise<Buffer | string> {
-  const page = await getPage(isDev)
+export async function getScreenshot(html: string): Promise<Buffer | string> {
+  const page = await getPage()
 
   await page.setViewport({ width: 1200, height: 630 })
   await page.setContent(html)

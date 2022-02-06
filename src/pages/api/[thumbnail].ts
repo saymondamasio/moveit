@@ -1,9 +1,8 @@
+import fs from 'fs'
+import handlebars from 'handlebars'
 import { NextApiRequest, NextApiResponse } from 'next'
+import path from 'path'
 import { getScreenshot } from './_lib/chromium'
-import { getHtml } from './_lib/thumbnailTemplate'
-
-const isDev = !process.env.AWS_REGION
-const isHtmlDebug = process.env.OG_HTML_DEBUG === '1'
 
 export default async function handler(
   request: NextApiRequest,
@@ -12,8 +11,6 @@ export default async function handler(
   const query = request.query
 
   if (query.thumbnail === 'thumbnail.png') {
-    console.log('image')
-
     try {
       const level = Number(query.level)
       const challenges = Number(query.challenges)
@@ -25,16 +22,23 @@ export default async function handler(
         )
       }
 
-      const html = getHtml({ level, challenges, experience })
+      const filePath = path.join(
+        process.cwd(),
+        'src',
+        'templates',
+        'thumbnail.hbs'
+      )
 
-      if (isHtmlDebug) {
-        response.setHeader('Content-Type', 'text/html')
-        response.end(html)
+      const template = fs.readFileSync(filePath, 'utf8')
 
-        return
-      }
+      const content = handlebars.compile(template)({
+        base_url: process.env.NEXT_PUBLIC_APP_URL,
+        level,
+        challenges,
+        experience,
+      })
 
-      const file = await getScreenshot(html, isDev)
+      const file = await getScreenshot(content)
 
       response.statusCode = 200
 
@@ -50,38 +54,6 @@ export default async function handler(
       response.setHeader('Content-Type', 'text/html')
       response.end(`<h1>Internal Error</h1><p>${e}</p>`)
       console.error(e)
-      console.log(isDev)
-    }
-  }
-  if (query.thumbnail === 'thumbnail') {
-    console.log('api')
-
-    try {
-      const level = Number(query.level)
-      const challenges = Number(query.challenges)
-      const experience = Number(query.experience)
-
-      if (!level || !challenges || !experience) {
-        throw new Error('Missing informations')
-      }
-
-      const html = getHtml({ level, challenges, experience })
-
-      if (isHtmlDebug) {
-        response.setHeader('Content-Type', 'text/html')
-        response.end(html)
-
-        return
-      }
-
-      response.setHeader('Content-Type', 'text/html')
-      return response.end(html)
-    } catch (e) {
-      response.statusCode = 500
-      response.setHeader('Content-Type', 'text/html')
-      response.end(`<h1>Internal Error</h1><p>${e}</p>`)
-      console.error(e)
-      console.log(isDev)
     }
   }
 }
