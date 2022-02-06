@@ -16,8 +16,8 @@ export function getHtml({ level, challenges, experience }: GetHtmlProps) {
       <meta name="twitter:description" content="Consegui um novo nível depois de completar ${challenges} desafios no Move.it! Acumulando ${experience} xp!" />
       <meta name="og:description" content="Consegui um novo nível depois de completar ${challenges} desafios no Move.it! Acumulando ${experience} xp!" />
       <meta name="og:title" content="Vamos comemorar! Eu subi para o nível ${level}" />
-      <meta name="twitter:image" content="${`${process.env.NEXT_PUBLIC_APP_URL}/api/thumbnail.png?image=true&level=${level}&challenges=${challenges}&experience=${experience}`}" />
-      <meta name="og:image" content="${`${process.env.NEXT_PUBLIC_APP_URL}/api/thumbnail.png?image=true&level=${level}&challenges=${challenges}&experience=${experience}`}" />
+      <meta name="twitter:image" content="${`${process.env.NEXT_PUBLIC_APP_URL}/api/thumbnail?image=true&level=${level}&challenges=${challenges}&experience=${experience}`}" />
+      <meta name="og:image" content="${`${process.env.NEXT_PUBLIC_APP_URL}/api/thumbnail?image=true&level=${level}&challenges=${challenges}&experience=${experience}`}" />
       
       <link rel="shortcut icon" href="${
         process.env.NEXT_PUBLIC_APP_URL
